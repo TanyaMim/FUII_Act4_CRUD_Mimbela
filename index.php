@@ -2,13 +2,15 @@
     include("conexion.php");
     $con=conectar();
 
-    $sql="SELECT * FROM empleado";
+    $sql="SELECT *  FROM cliente";
     $query=mysqli_query($con,$sql);
+
+    $row=mysqli_fetch_array($query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>EMPLEADO CFE</title>
+        <title> CFE</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
@@ -23,12 +25,16 @@
                             <h1>Ingrese datos</h1>
                                 <form action="insertar.php" method="POST">
 
-                                    <input type="text" class="form-control mb-3" name="nombres" placeholder="Nombres">
-                                    <input type="text" class="form-control mb-3" name="apellidos" placeholder="Apellidos">
-                                    <input type="text" class="form-control mb-3" name="numTelefono" placeholder="Número de telefono">
-                                    <input type="text" class="form-control mb-3" name="direccion" placeholder="Dirección">
-                                    
+                                    <input type="text" class="form-control mb-3" name="nombre" placeholder="Nombre">
+                                    <input type="text" class="form-control mb-3" name="apellido_p" placeholder="Apellido paterno">
+                                    <input type="text" class="form-control mb-3" name="apellido_m" placeholder="Apellido materno">
+                                    <input type="text" class="form-control mb-3" name="no_cliente" placeholder="No. de cliente">
+                                    <input type="text" class="form-control mb-3" name="tel" placeholder="Telefono">
+                                    <input type="text" class="form-control mb-3" name="correo" placeholder="Correo">
+                                    <input type="date" class="form-control mb-3" name="fecha" placeholder="Fecha de nacimiento">
+
                                     <input type="submit" class="btn btn-primary">
+                                    <a href="/nava/index.php">Inicio</a></li> 
                                 </form>
                         </div>
 
@@ -36,13 +42,16 @@
                             <table class="table" >
                                 <thead class="table-success table-striped" >
                                     <tr>
-                                        <th>Codigo</th>
-                                        <th>Nombres</th>
-                                        <th>Apellidos</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido paterno</th>
+                                        <th>Apellido materno</th>
+                                        <th>No. de cliente</th>
                                         <th>Telefono</th>
-                                        <th>Direccion</th>
+                                        <th>Correo</th>
+                                        <th>Fecha de nacimiento</th>
                                         <th></th>
                                         <th></th>
+
                                     </tr>
                                 </thead>
 
@@ -51,13 +60,15 @@
                                             while($row=mysqli_fetch_array($query)){
                                         ?>
                                             <tr>
-                                                <th><?php  echo $row['EmpleadoID']?></th>
-                                                <th><?php  echo $row['Nombres']?></th>
-                                                <th><?php  echo $row['Apellidos']?></th>
-                                                <th><?php  echo $row['NumTelefono']?></th>
-                                                <th><?php  echo $row['Direccion']?></th>   
-                                                <th><a href="actualizar.php?id=<?php echo $row['EmpleadoID'] ?>" class="btn btn-info">Editar</a></th>
-                                                <th><a href="delete.php?id=<?php echo $row['EmpleadoID'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
+                                                <th><?php  echo $row['nombre']?></th>
+                                                <th><?php  echo $row['apellido_p']?></th>
+                                                <th><?php  echo $row['apellido_m']?></th>
+                                                <th><?php  echo $row['no_cliente']?></th>
+                                                <th><?php  echo $row['tel']?></th>
+                                                <th><?php  echo $row['correo']?></th>
+                                                <th><?php  echo $row['fecha']?></th>    
+                                                <th><a href="actualizar.php?id=<?php echo $row['no_cliente'] ?>" class="btn btn-info">Editar</a></th>
+                                                <th><a href="delete.php?id=<?php echo $row['no_cliente'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
                                             </tr>
                                         <?php 
                                             }

@@ -4,7 +4,7 @@
 
 $id=$_GET['id'];
 
-$sql="SELECT * FROM empleado WHERE EmpleadoID='$id'";
+$sql="SELECT * FROM cliente WHERE no_cliente='$id'";
 $query=mysqli_query($con,$sql);
 
 $row=mysqli_fetch_array($query);
@@ -24,14 +24,18 @@ $row=mysqli_fetch_array($query);
     <body>
                 <div class="container mt-5">
                     <form action="update.php" method="POST">
+                    
+                                <input type="hidden" name="no_cliente" value="<?php echo $row['no_cliente']  ?>">
                                 
-                                <input type="hidden" class="form-control mb-3" name="id" placeholder="ID" value="<?php echo $row['EmpleadoID']  ?>">
-                                <input type="text" class="form-control mb-3" name="nombres" placeholder="Nombres" value="<?php echo $row['Nombres']  ?>">
-                                <input type="text" class="form-control mb-3" name="apellidos" placeholder="Apellidos" value="<?php echo $row['Apellidos']  ?>">
-                                <input type="text" class="form-control mb-3" name="numTelefono" placeholder="Número de Telefono" value="<?php echo $row['NumTelefono']  ?>">
-                                <input type="text" class="form-control mb-3" name="direccion" placeholder="Dirección" value="<?php echo $row['Direccion']  ?>">
+                                <input type="text" class="form-control mb-3" name="nombre" placeholder="Nombre">
+                                <input type="text" class="form-control mb-3" name="apellido_p" placeholder="Apellido paterno">
+                                <input type="text" class="form-control mb-3" name="apellido_m" placeholder="Apellido materno">
+                                <input type="text" class="form-control mb-3" name="no_cliente" placeholder="No. de cliente">
+                                <input type="text" class="form-control mb-3" name="tel" placeholder="Telefono">
+                                <input type="text" class="form-control mb-3" name="correo" placeholder="Correo">
+                                <input type="date" class="form-control mb-3" name="fecha" placeholder="Fecha de nacimiento">
                                 
-                                <input type="submit" class="btn btn-primary btn-block" value="Actualizar">
+                            <input type="submit" class="btn btn-primary btn-block" value="Actualizar">
                     </form>
                     
                 </div>

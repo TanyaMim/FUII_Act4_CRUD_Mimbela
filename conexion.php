@@ -4,7 +4,7 @@ function conectar(){
     $user="root";
     $pass="";
 
-    $bd="dbcfe";
+    $bd="bdcfe";
 
     $con=mysqli_connect($host,$user,$pass);
 

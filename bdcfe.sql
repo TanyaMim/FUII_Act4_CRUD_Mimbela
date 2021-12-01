@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2021 a las 22:41:31
+-- Tiempo de generación: 01-12-2021 a las 23:07:22
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -24,48 +24,94 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `cliente`
+--
+
+CREATE TABLE `cliente` (
+  `Nombre` varchar(50) NOT NULL,
+  `Apellido paterno` varchar(50) NOT NULL,
+  `Apellido materno` varchar(50) NOT NULL,
+  `No. de cliente` int(50) NOT NULL,
+  `Telefono` int(10) NOT NULL,
+  `Correo` varchar(50) NOT NULL,
+  `Fecha de nacimiento` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `empleado`
 --
 
 CREATE TABLE `empleado` (
-  `EmpleadoID` int(4) NOT NULL,
-  `Nombres` varchar(30) NOT NULL,
-  `Apellidos` varchar(30) NOT NULL,
-  `NumTelefono` bigint(10) NOT NULL,
-  `Direccion` varchar(30) NOT NULL
+  `No. de empleado` int(15) NOT NULL,
+  `Nombre` varchar(50) NOT NULL,
+  `Apellido paterno` varchar(50) NOT NULL,
+  `Apellido materno` varchar(50) NOT NULL,
+  `Telefono` int(10) NOT NULL,
+  `Correo` varchar(50) NOT NULL,
+  `Fecha de nacimiento` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `empleado`
+-- Estructura de tabla para la tabla `factura`
 --
 
-INSERT INTO `empleado` (`EmpleadoID`, `Nombres`, `Apellidos`, `NumTelefono`, `Direccion`) VALUES
-(5, 'Tanya', 'Moreno', 6254124562, 'Pueblito perdido 5212'),
-(6, 'Marco Antonio', 'LÃ³pez LÃ³pez', 6548973256, 'Pueblito perdido 5212'),
-(7, 'Pedro', 'PÃ©rez LopÃ©z', 6584785421, 'Pueblito perdido 5212'),
-(8, 'Martina', 'Martinez Juarez', 6254124562, 'Pueblito perdido 5212'),
-(9, 'Juana', 'Banana Ruiz', 6548973256, 'Pueblito perdido 5212'),
-(10, 'Juana', 'Banana Ruiz', 6548973256, 'Pueblito perdido 5212');
+CREATE TABLE `factura` (
+  `Nombre del cliente` varchar(50) NOT NULL,
+  `No. de factura` int(50) NOT NULL,
+  `Fecha de facturacion` date NOT NULL,
+  `No. de servicio` int(50) NOT NULL,
+  `No. de medidor` int(50) NOT NULL,
+  `Total a pagar` double NOT NULL,
+  `Dirección` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `servicio`
+--
+
+CREATE TABLE `servicio` (
+  `Telefono` int(10) NOT NULL,
+  `Correo` varchar(50) NOT NULL,
+  `Tipo de servicio` varchar(100) NOT NULL,
+  `Especificacion del servicio` text NOT NULL,
+  `Direccion` varchar(50) NOT NULL,
+  `Propietario` varchar(100) NOT NULL,
+  `Sugerencia` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`No. de cliente`);
+
+--
 -- Indices de la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  ADD PRIMARY KEY (`EmpleadoID`);
+  ADD PRIMARY KEY (`No. de empleado`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- Indices de la tabla `factura`
 --
+ALTER TABLE `factura`
+  ADD PRIMARY KEY (`No. de factura`);
 
 --
--- AUTO_INCREMENT de la tabla `empleado`
+-- Indices de la tabla `servicio`
 --
-ALTER TABLE `empleado`
-  MODIFY `EmpleadoID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+ALTER TABLE `servicio`
+  ADD PRIMARY KEY (`Telefono`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

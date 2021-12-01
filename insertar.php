@@ -2,18 +2,20 @@
 include("conexion.php");
 $con=conectar();
 
-$nombres=$_POST['nombres'];
-$apellidos=$_POST['apellidos'];
-$telefono=$_POST['numTelefono'];
-$direccion=$_POST['direccion'];
+$nombre=$_POST['nombre'];
+$apellido_p=$_POST['apellido_p'];
+$apellido_m=$_POST['apellido_m'];
+$no_cliente=$_POST['no_cliente'];
+$tel=$_POST['tel'];
+$correo=$_POST['correo'];
+$fecha=$_POST['fecha'];
 
-
-$sql="INSERT INTO empleado(`Nombres`, `Apellidos`, `NumTelefono`, `Direccion`) VALUES('$nombres','$apellidos','$telefono','$direccion')";
+$sql="INSERT INTO cliente VALUES('$nombre','$apellido_p','$apellido_m','$no_cliente','$tel','$correo','$fecha')";
 $query= mysqli_query($con,$sql);
 
 if($query){
     Header("Location: index.php");
+    
 }else {
-    echo "Hay un problema";
 }
 ?>
